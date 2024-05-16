@@ -6,11 +6,16 @@
 //
 
 import UIKit
-import SwifterSwift
 import RxTheme
-import HiCore
+import SwifterSwift
 
 public let themeService = ThemeType.service(initial: .current)
+
+struct Constant {
+    static let isDark               = "isDark"
+    static let primaryColor         = "primaryColor"
+    static let secondaryColor       = "secondaryColor"
+}
 
 /// 假设从白到黑值为：0~9
 public protocol Theme {
@@ -82,22 +87,22 @@ public enum ThemeType: ThemeProvider {
     
     public func save() {
         let defaults = UserDefaults.standard
-        defaults.set(self.isDark, forKey: Parameter.isDark)
-        defaults.set(self.associatedObject.primaryColor.hexString, forKey: Parameter.primaryColor)
-        defaults.set(self.associatedObject.secondaryColor.hexString, forKey: Parameter.secondaryColor)
+        defaults.set(self.isDark, forKey: Constant.isDark)
+        defaults.set(self.associatedObject.primaryColor.hexString, forKey: Constant.primaryColor)
+        defaults.set(self.associatedObject.secondaryColor.hexString, forKey: Constant.secondaryColor)
         defaults.synchronize()
     }
     
     public static var current: ThemeType {
         let defaults = UserDefaults.standard
-        let isDark = defaults.bool(forKey: Parameter.isDark)
+        let isDark = defaults.bool(forKey: Constant.isDark)
         var primaryColor: UIColor?
         var secondaryColor: UIColor?
-        if let string = defaults.string(forKey: Parameter.primaryColor),
+        if let string = defaults.string(forKey: Constant.primaryColor),
            let value = UIColor.init(hexString: string) {
             primaryColor = value
         }
-        if let string = defaults.string(forKey: Parameter.secondaryColor),
+        if let string = defaults.string(forKey: Constant.secondaryColor),
            let value = UIColor.init(hexString: string) {
             secondaryColor = value
         }

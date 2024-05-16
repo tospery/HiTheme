@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.frameworks = 'Foundation'
   
   s.source_files = 'HiTheme/**/*'
-  s.dependency 'HiCore', '~> 1.0'
-  s.dependency 'RxTheme', '6.0.0'
+  s.dependency 'RxTheme', '~> 6.0'
+  s.dependency 'SwifterSwift/UIKit', '~> 6.0'
   
 end
