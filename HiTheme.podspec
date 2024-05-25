@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'HiTheme'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Theme function.'
   s.description      = <<-DESC
 						Theme function using Swift.
